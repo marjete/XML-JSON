@@ -1,0 +1,47 @@
+---
+title: "vucinaj,m.607.hw.XML and JSON"
+author: "Marjete"
+date: "2022-10-16"
+output: html_document
+---
+#Assignment – Working with XML and JSON in R
+
+###Pick three of your favorite books on one of your favorite subjects. At least one of the books should have more than one author. For each book, include the title, authors, and two or three other attributes that you find interesting. Take the information that you’ve selected about these three books, and separately create three files which store the book’s information in HTML (using an html table), XML, and JSON formats (e.g. “books.html”, “books.xml”, and “books.json”). To help you better understand the different file structures, I’d prefer that you create each of these files “by hand” unless you’re already very comfortable with the file formats. Write R code, using your packages of choice, to load the information from each of the three sources into separate R data frames. Are the three data frames identical? Your deliverable is the three source files and the R code. If you can, package your assignment solution up into an .Rmd file and publish to rpubs.com. [This will also require finding a way to make your three text files accessible from the web].
+```{r}
+knitr::opts_chunk$set(echo = TRUE)
+
+#load library
+library(jsonlite)
+library(xml2)
+library(XML)
+library(htmltab)
+```
+#JSON
+```{r}
+d <- jsonlite::fromJSON(txt = "https://raw.githubusercontent.com/marjete/XML-JSON/main/data.json", simplifyDataFrame = TRUE)
+df_json <- as.data.frame(d)
+df_json
+```
+```{r}
+str(df_json)
+```
+#XML
+```{r}
+data_xml <- xml2::read_xml("https://raw.githubusercontent.com/marjete/XML-JSON/main/data.xml")
+book_xml <- XML::xmlParse(data_xml)
+df_xml <- xmlToDataFrame(nodes=getNodeSet(book_xml, "//book"))
+df_xml
+```
+I'm not sure why xml has '/n' - its the only one that doesnt look similar to the other file structures.
+```{r }
+str(df_xml)
+```
+#HTML
+```{r}
+html <- htmltab::htmltab(doc = "https://raw.githubusercontent.com/marjete/XML-JSON/main/data.html")
+html
+```
+```{r}
+str(html)
+```
+#Conclusion: All the three dataframes should be identical the number of content (#'3 obs. of  4 variables') and by the type, all reflecting 'chr' characters. Although my xml file/ data does look different in the code above. 
