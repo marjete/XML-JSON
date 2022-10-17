@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<books>
+<book>
+  <title>
+   tuesday with morrie
+  </title>
+  <author>
+    Mitch Albom
+  </author>
+  <year>
+    1997
+  </year>
+  <pages>
+    192
+  </pages>
+</book>
+<book>
+  <title>
+    the kite runner
+  </title>
+  <author>
+    Khaled Hosseini
+  </author>
+ <year>
+    2003
+  </year>
+  <pages>
+    400
+  </pages>
+</book>
+<book>
+  <title>
+   The Talisman
+  </title>
+  <author>
+   Peter Straub and Stephen King
+  </author>
+   <year>
+   1984
+  </year>
+  <pages>
+    656
+  </pages>
+</book>
+</books>
